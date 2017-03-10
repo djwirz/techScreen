@@ -3,7 +3,7 @@ const fetchHundredMore = (arg, cb) => {
 
   console.log('Adding 100 pulls to pull requests array')
 
-  fetch(`https://api.github.com/repos/lodash/lodash/pulls?state=all&per_page=100&page=${count}`)
+  fetch(`endpoint${count}`)
     .then(blob => blob.json())
     .then(data => pullRequests.push(...data))
     .then(() => cb(arg))

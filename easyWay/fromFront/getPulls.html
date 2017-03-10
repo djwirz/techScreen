@@ -25,10 +25,10 @@
   <script src="weeksAgo.js"></script>
   <script src="fetchHundredMore.js"></script>
 <script>
-const endpoint = 'https://api.github.com/repos/lodash/lodash/pulls?state=all&per_page=100';
+const endpoint = 'https://api.github.com/repos/lodash/lodash/pulls?state=all&per_page=100&page=';
 
 const pullRequests = [];
-fetch(endpoint)
+fetch(`${endpoint}1`)
   .then(blob => blob.json())
   .then(data => pullRequests.push(...data))
 
