@@ -20,7 +20,7 @@ const weeksAgo = (weeks, count = 0) => {
         return weeksAgo(weeks, count)
       } else {
         let i = 98
-        while (moment().diff(pulls[i]['closed_at'], 'week') < weeks) {
+        while (moment().diff(pulls[i]['closed_at'], 'week') > weeks) {
           i--
         }
         console.log(((count * 100) + i) / weeks)
