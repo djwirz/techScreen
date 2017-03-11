@@ -82,3 +82,9 @@
       opacity: 1;
       height: 60px;
     }
+
+    #editor { 
+        margin:50px auto;
+        height:400px;
+        width: 900px;
+    }

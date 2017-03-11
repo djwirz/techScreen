@@ -1,6 +1,7 @@
 const endpoint = 'https://api.github.com/repos/lodash/lodash/pulls?state=all&per_page=100&page=';
 
 const pullRequests = [];
+
 fetch(`${endpoint}1`)
   .then(blob => blob.json())
   .then(data => pullRequests.push(...data))
