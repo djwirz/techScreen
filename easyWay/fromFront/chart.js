@@ -1,4 +1,4 @@
-const chartingPullsByWeek = (weeksChartInput=20) => {
+const chartingPullsByWeek = (weeks=20) => {
   let pullPerWeek = {}
   let weeksForChart = []
   let pullsForChart = []
@@ -13,7 +13,7 @@ const chartingPullsByWeek = (weeksChartInput=20) => {
     }
   })
 
-  for(let i = 1; i <= weeksChartInput; i++) {
+  for(let i = 1; i <= weeks; i++) {
     if(pullPerWeek[i] === undefined) {
       pullPerWeek[i] = 0
     }
@@ -37,5 +37,7 @@ const chartingPullsByWeek = (weeksChartInput=20) => {
 const ctx = document.getElementById("chart");
 
 const makeNewChart = () => {
-  return new Chart(ctx, chartingPullsByWeek())
+  let chartWeeksBack = document.getElementById('chartWeeksBack').value
+  document.getElementById('currentChartWeeksBack').innerHTML = chartWeeksBack
+  return new Chart(ctx, chartingPullsByWeek(chartWeeksBack))
 }

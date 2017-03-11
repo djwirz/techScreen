@@ -26,9 +26,9 @@
   </div>
 
   <div class="search-form">
-    <span>Chart showing how many pull request each week</span>
-    <input type="number" placeholder="Number of weeks" id="weeksChartInput" class="search" height: 12em min="1" max="150">
-    <input type="button" onclick="makeNewChart()" value="submit" />
+    <span>Chart showing how many pull request over the last <span id='currentChartWeeksBack'>0</span></span>
+    <input type="number" placeholder="Number of weeks" id="chartWeeksBack" class="search" height: 12em min="1" max="150">
+    <input type="button" onclick="makeNewChart()" value="submitChart" />
     <canvas id="chart" width="400" height="400"></canvas>
   </div>
 
