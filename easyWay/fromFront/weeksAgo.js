@@ -21,10 +21,8 @@ const weeksAgo = (weeks) => {
   }
 }
 
-function avgPullPerWeek () {
+const avgPullPerWeek = () => {
   let weeksBack = document.getElementById('weeksBack').value
   document.getElementById('currentWeeksBack').innerHTML = weeksBack
   weeksAgo(weeksBack)
 }
-
-//need to make fetchHundredMore self tracking
