@@ -14,7 +14,7 @@
     <input type="text" class="search" placeholder="Title or Closed Date">
     <ul class="suggestions">
       <li>Filter for a title</li>
-      <li>or a closed date</li>
+      <li>or a date created</li>
     </ul>
   </form>
 
@@ -37,9 +37,22 @@
     <span>Terminal to have access to the array of pull requests rendered to state</span>
     
   </div>
-  <div id="editor">const workWithPulls = pullsArr => {
-    return 'some crazy pull manipulation'
-}</div>
+  <div id="editor">//pullRequests is an array of the fetched objects from git request
+
+const useThePullArray = () => {
+  pullRequests.forEach(pull =>{
+      console.log(moment(pull.created_at))
+  })
+  return 'Look in the console'
+}
+
+useThePullArray()
+  </div>
+
+  <div class="search-form">
+    <pre id="editor-output">Click "Run" to see output from the editor here</pre>
+    <input type="button" onclick="runEditor()" value="Run" />
+  </div>
     
   <script>
     const editor = ace.edit("editor")
@@ -48,6 +61,7 @@
     editor.getSession().setMode("ace/mode/javascript")
   </script>
 
+  <script src="editor.js"></script>
   <script src="search.js"></script>
   <script src="weeksAgo.js"></script>
   <script src="chart.js"></script>

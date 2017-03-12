@@ -9,7 +9,7 @@ fetch(`${endpoint}1`)
 function findMatches(wordToMatch, pullRequests) {
   return pullRequests.filter(pull => {
     const regex = new RegExp(wordToMatch, 'gi');
-    return pull.title.match(regex) || pull.closed_at.match(regex)
+    return pull.title.match(regex) || pull.created_at.match(regex)
   });
 }
 
@@ -22,10 +22,10 @@ function displayMatches() {
   const html = matchArray.map(pull => {
     const regex = new RegExp(this.value, 'gi');
     const titleName = pull.title.replace(regex, `<span class="hl">${this.value}</span>`);
-    const closedDateName = pull.closed_at.replace(regex, `<span class="hl">${this.value}</span>`);
+    const openedDate = pull.created_at.replace(regex, `<span class="hl">${this.value}</span>`);
     return `
       <li>
-        <span class="name">${titleName}, ${closedDateName}</span>
+        <span class="name">${titleName}, ${openedDate}</span>
         <span class="number">${numberWithCommas(pull.number)}</span>
       </li>
     `;
