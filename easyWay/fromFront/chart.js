@@ -2,8 +2,8 @@ const chartingPullsByWeek = (weeks = 20) => {
   let pullPerWeek = {}
   let weeksForChart = []
   let pullsForChart = []
-  let currentWeek = -1
 
+  //Indexing the pulls per week in an object
   pullRequests.forEach(pull => {
     let current = Math.floor(moment().diff(pull['closed_at'], 'week'))
     if (pullPerWeek[current]) {
@@ -13,6 +13,8 @@ const chartingPullsByWeek = (weeks = 20) => {
     }
   })
 
+  //Taking the index and turning it into two arrays for the chart
+  //Inserting weeks that didn't have any pull requests and setting them to zero
   for (let i = 1; i <= weeks; i++) {
     if (pullPerWeek[i] === undefined) {
       pullPerWeek[i] = 0
@@ -21,6 +23,7 @@ const chartingPullsByWeek = (weeks = 20) => {
     pullsForChart.push(pullPerWeek[i])
   }
 
+  //returning an object to be accepted as the second argument for initializing a new chart
   return {
     type: 'line',
     data: {
