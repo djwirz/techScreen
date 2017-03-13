@@ -1,3 +1,7 @@
+//factored out of weeksAgo.js to remove the fetch for an extra 100 pull requests everytime the function was called
+//Can now be used in future calculations
+//added the callback as an argument to explicitly hand control over to this function
+//leaves less room for asynchronous errors
 const fetchHundredMore = (arg, cb) => {
   let count = (pullRequests.length / 100) + 1
 
