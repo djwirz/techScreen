@@ -1,11 +1,16 @@
+//These two vairables are used across the application
+//I have opened myself up to almost every form of vulnerability possible including using an eval from a user input
 const endpoint = 'https://api.github.com/repos/lodash/lodash/pulls?state=all&per_page=100&page='
-
 const pullRequests = []
 
+//I make my initial request to the github api
+//use destructuring to avoid having to write a loop
 fetch(`${endpoint}1`)
   .then(blob => blob.json())
   .then(data => pullRequests.push(...data))
 
+//Regexing for search, worth noting that it is unwise to use a variable here that may be null
+//example being when I initially used closed_at and a new pull was opened with no close
 function findMatches (wordToMatch, pullRequests) {
   return pullRequests.filter(pull => {
     const regex = new RegExp(wordToMatch, 'gi')
@@ -13,6 +18,7 @@ function findMatches (wordToMatch, pullRequests) {
   })
 }
 
+//More regexing for regex's sake
 function numberWithCommas (x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
