@@ -10,3 +10,5 @@ export const query = angular.module('query', [uiRouter])
     })
   })
   .directive('query', queryDirective)
+
+//should be getting the logic together to make a custom query, but once I found out I would be using my other implementation this was cast aside

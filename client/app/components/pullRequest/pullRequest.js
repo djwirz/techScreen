@@ -21,3 +21,5 @@ export const pullRequest = angular.module('pullRequest', [uiRouter])
     })
   })
   .directive('pullRequest', pullRequestDirective)
+
+//this use of the router is normal at the moment, spoiler alert this leads to things on the front end that shouldn't be done

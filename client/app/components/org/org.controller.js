@@ -18,3 +18,6 @@ class OrgController {
 OrgController.$inject = ['Pulls']
 
 export {OrgController}
+
+//declare this.search here to avoid potential issues with ng search
+//use get pulls to bring the pulls from state onto the controller by injectings Pulls

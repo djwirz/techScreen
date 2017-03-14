@@ -8,8 +8,13 @@ const pulls = ($http, $q) => {
 
   const get = () => {
     if (allPulls.length > 0) {
+      //this checks to see if the pulls already exist on state
+      //expecting a promise so $q wraps the promiseless answer in a promise to avoid errors
       return $q.when(allPulls)
     }
+    //otherwise need to make the initial request
+    //slug is a horrendous way to use the front end to do my routing for individual requests
+    //Only try at home, never in production
     return $http.get(`${lodashPullBaseUrl}?state=all`)
       .then(({data}) => {
         allPulls = data.map(pull => {
@@ -23,6 +28,8 @@ const pulls = ($http, $q) => {
     const pull = {}
     pull.data = _.find(allPulls, {number: +query})
     if (pull.data) {
+      //searches state for the particular query
+      //just in case can make another query to the api for the particular pull request
       console.log('solved unnecessary request issue', pull)
       return $q.when(pull)
     } else {
@@ -69,6 +76,9 @@ const pulls = ($http, $q) => {
   const getState = () => {
     return allPulls
   }
+  //this is awesome
+  //keeps state in one place and allows it to be pulled into different parts of the app
+  //state can still be altered, but not directly
 
   return {get, getOne, avgPullPerWeek, customQuery, getState}
 }
@@ -76,3 +86,5 @@ const pulls = ($http, $q) => {
 pulls.$inject = ['$http', '$q']
 
 export {pulls}
+
+//coolest file in this project
