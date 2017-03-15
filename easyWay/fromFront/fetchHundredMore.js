@@ -7,7 +7,7 @@ const fetchHundredMore = (arg, cb) => {
 
   console.log('Adding 100 pulls to pull requests array')
 
-  fetch(`endpoint${count}`)
+  fetch(`${endpoint}${count}`)
     .then(blob => blob.json())
     .then(data => pullRequests.push(...data))
     .then(() => cb(arg))
